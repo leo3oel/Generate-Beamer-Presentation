@@ -1,0 +1,17 @@
+{{ preamble }}
+
+\begin{document}
+    {%- for section in sections %}
+        {%- for element in section %}
+            {%- if element.type == 'Folder' %}
+                pass
+            {%- endif %}
+            {%- if element.type == 'Pictures' %}
+            pass
+            {%- endif %}
+            {%- if element.type == 'TeX' %}
+            pass
+            {%- endif %}
+        {%- endfor %}
+    {%- endfor %}
+\end{document}
