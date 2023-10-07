@@ -29,8 +29,8 @@ Pictures need to be named like this:
 - `slideName` name of the slide
 - `minsize` specify the size of the image on the slide. If possible a bigger size will be taken. Available sizes are:
     - 1 (full width)
-    - 1/2 (half width)
-    - 1/3 (1/3 width)
+    - 2 (half width)
+    - 3 (1/3 width)
 - `caption` specify the caption of the image. No caption will be produced if left empty
 - `fileending` supported fileendings are:
     - .png
@@ -44,12 +44,8 @@ NOTE: No preamble or anything needed
 #### Naming
 TeX snippets need to be named like this:
 ```
-{number}--{slideName}--{size}.tex
+{number}--{slideName}.tex
 ```
 
 - `number` specifies the order of the elements. If there are other numbered elements (like folders or pictures) they will be also counted.
 - `slideName` name of the slide
-- `size` specify the size of the image on the slide. If possible a bigger size will be taken. Available sizes are:
-    - 1 (full width)
-    - 1/2 (half width)
-    - 1/3 (1/3 width)
