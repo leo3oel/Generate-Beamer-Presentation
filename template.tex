@@ -15,7 +15,7 @@
             \begin{figure}
                 \centering
                 {%- if element.length == 1 %}
-                \includegraphics[width=0.7\textwidth, height=.9\textheight, keepaspectratio]{ {{- element.pictures[0].path -}} }
+                \includegraphics[width=0.7\textwidth, height=.8\textheight, keepaspectratio]{ {{- element.pictures[0].path -}} }
                 {%- if element.pictures[0].caption %}
                 \caption{ {{ element.pictures[0].caption }} }
                 {%- endif %}
@@ -23,7 +23,7 @@
                     {%- for picture in element.pictures %}
                 \begin{subfigure}{ {{- 1/element.length - 0.01 -}} \textwidth}
                     \centering
-                    \includegraphics[width=\textwidth, height=.9\textheight, keepaspectratio]{ {{- picture.path -}} }
+                    \includegraphics[width=\textwidth, height=.8\textheight, keepaspectratio]{ {{- picture.path -}} }
                     {%- if picture.caption %}
                     \caption{ {{- picture.caption -}} }
                     {%- endif %}
