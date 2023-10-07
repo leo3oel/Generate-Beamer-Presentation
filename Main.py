@@ -9,6 +9,7 @@ class Main:
     def __init__(self):
         self.topLevel = []
         self.getTopLevel()
+        self.sort()
         self.generateTeX()
 
     def getTopLevel(self):
@@ -66,6 +67,9 @@ class Main:
                         if not self.__nextSlideSameTitle(fileNameList, index):
                             break
             list.append(element)
+
+    def sort(self):
+        self.topLevel = sorted(self.topLevel, key=lambda x: x.number)
 
     def __nextSlideSameTitle(self, fileNameList, index):
         titleFirstSlide = fileNameList[index].split('--')[1]
