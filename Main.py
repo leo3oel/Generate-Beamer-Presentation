@@ -44,7 +44,8 @@ class Main:
                 listOfElements.append(
                     Elements.Elements()
                 )
-                fileNameWithoutEnding = element.split('.')[0]
+                fileNameWithoutEnding = element.split('.')[:-1]
+                fileNameWithoutEnding = "".join(fileNameWithoutEnding)
                 elementVals = fileNameWithoutEnding.split('--')
                 listOfElements[-1].addTeX(elementPath, elementVals[0], elementVals[1])
 

@@ -1,11 +1,7 @@
-*
+__pycache__/*
+TopFolder/*
+output.*
+logo.png
+preamble.tex
 
-!Main.py
-!preamble.tex
-!README.tex
-!template.tex
-!.gitignore
-!TopFolder
 !TopFolder/README.md
-!pyproject.toml
-!poetry.lock
