@@ -3,13 +3,39 @@
 \begin{document}
     \maketitle
     {%- for section in sections %}
-        \sect{ {{section.name}} }
+        \sect{ {{- section.name -}} }
         {%- for element in section.elements %}
-            {%- if element.type == 'Folder' %}
-            pass
+            {%- if element.type == 'Section' %}
+            \subpage{ {{- element.name -}} }
+                {%- for element in element.elements %}
+                    {%- if element.type == 'Pictures' %}
+                \begin{frame}{ {{- element.title -}} }
+                    \begin{figure}
+                        \centering
+                        {%- if element.length == 1 %}
+                        \includegraphics[width=0.7\textwidth, height=.8\textheight, keepaspectratio]{ {{- element.pictures[0].path -}} }
+                        {%- if element.pictures[0].caption %}
+                        \caption{ {{ element.pictures[0].caption }} }
+                        {%- endif %}
+                        {%- else %}
+                            {%- for picture in element.pictures %}
+                        \begin{subfigure}{ {{- 1/element.length - 0.01 -}} \textwidth}
+                            \centering
+                            \includegraphics[width=\textwidth, height=.8\textheight, keepaspectratio]{ {{- picture.path -}} }
+                            {%- if picture.caption %}
+                            \caption{ {{- picture.caption -}} }
+                            {%- endif %}
+                        \end{subfigure}
+                            {%- endfor %}
+                        {%- endif %}
+                    \end{figure}
+                \end{frame}
+                    {%- endif %}
+                    {%- if element.type == 'TeX' %}
+                    \input{ {{- element.path -}} }
+                    {%- endif %}
+                {%- endfor %}
             {%- endif %}
-
-
             {%- if element.type == 'Pictures' %}
         \begin{frame}{ {{- element.title -}} }
             \begin{figure}
@@ -36,7 +62,7 @@
 
 
             {%- if element.type == 'TeX' %}
-            pass
+            \input{ {{- element.path -}} }
             {%- endif %}
         {%- endfor %}
     {%- endfor %}

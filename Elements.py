@@ -5,6 +5,7 @@ class Section:
         self.number = int(number)
         self.elements = []
         self.path = path
+        self.type = "Section"
 
 class Elements:
 

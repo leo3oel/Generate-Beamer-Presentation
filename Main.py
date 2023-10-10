@@ -45,7 +45,7 @@ class Main:
                     Elements.Elements()
                 )
                 fileNameWithoutEnding = element.split('.')[:-1]
-                fileNameWithoutEnding = "".join(fileNameWithoutEnding)
+                fileNameWithoutEnding = ".".join(fileNameWithoutEnding)
                 elementVals = fileNameWithoutEnding.split('--')
                 listOfElements[-1].addTeX(elementPath, elementVals[0], elementVals[1])
 
@@ -56,7 +56,8 @@ class Main:
             for index, fileName in enumerate(fileNameList):
                 if fileName not in addedPictures:
                     addedPictures.append(fileName)
-                    fileNameWithoutEnding = fileName.split('.')[0]
+                    fileNameWithoutEnding = fileName.split('.')[:-1]
+                    fileNameWithoutEnding = ".".join(fileNameWithoutEnding) 
                     pictureVals = fileNameWithoutEnding.split('--')
                     fullPath = os.path.join(topFolder, fileName)
                     fullPath = PureWindowsPath(fullPath).as_posix()
