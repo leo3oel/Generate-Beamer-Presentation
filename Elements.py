@@ -7,6 +7,11 @@ class Section:
         self.path = path
         self.type = "Section"
 
+    def sort(self):
+        self.elements = sorted(self.elements, key=lambda x: x.number)
+        for element in self.elements:
+            element.sort()
+
 class Elements:
 
     def __init__(self) -> None:
@@ -20,7 +25,7 @@ class Elements:
         self.title = title
         self.type = "Pictures"
         self.pictures.append(
-            Picture(pathToPicture, caption)
+            Picture(pathToPicture, number, caption)
         )
         self.length += 1
     
@@ -30,11 +35,15 @@ class Elements:
         self.title = title
         self.type = 'TeX'
         self.length = 1
+    
+    def sort(self):
+        self.pictures = sorted(self.pictures, key=lambda x: x.number)
 
 class Picture():
 
-    def __init__(self, path, caption) -> None:
+    def __init__(self, path, number, caption) -> None:
         self.path = path
+        self.number = number
         if caption:
             self.caption = caption
         else:

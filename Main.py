@@ -17,12 +17,13 @@ class Main:
         self.getItemsForFolder(startFolder, self.topLevel)
         
     def getItemsForFolder(self, startFolder, listOfElements):
-        dirList = os.listdir(startFolder)
+        dirList = self.__getSortedDirList(startFolder)
         addedPictures = []
         for index, element in enumerate(dirList):
             elementPath = os.path.join(startFolder, element)
             elementPath = PureWindowsPath(elementPath).as_posix()
             if os.path.isdir(elementPath):
+                addedPictures = []
                 folderVals = element.split('--')
                 listOfElements.append(
                     Elements.Section(
@@ -41,6 +42,7 @@ class Main:
                         break
                 self.addPictures(startFolder, filenameList, listOfElements, addedPictures)
             elif elementPath.lower().endswith(FileEndings.tex):
+                addedPictures = []
                 listOfElements.append(
                     Elements.Elements()
                 )
@@ -72,6 +74,21 @@ class Main:
 
     def sort(self):
         self.topLevel = sorted(self.topLevel, key=lambda x: x.number)
+        for section in self.topLevel:
+            section.sort()
+
+    def __getSortedDirList(self, startFolder):
+        dirList = os.listdir(startFolder)
+        dirList = [item for item in dirList if not item.startswith("ignore--")]
+        dirList = sorted(dirList, key=lambda x: self.__getItemNumber(x))
+        return dirList    
+
+    def __getItemNumber(self, path):
+        filename = os.path.basename(path)
+        if "--" in filename:
+            return (int(filename.split('--')[0]))
+        return 0
+
 
     def __nextSlideSameTitle(self, fileNameList, index):
         titleFirstSlide = fileNameList[index].split('--')[1]

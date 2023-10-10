@@ -32,7 +32,9 @@
                 \end{frame}
                     {%- endif %}
                     {%- if element.type == 'TeX' %}
+                \begin{frame}{ {{- element.title -}} }
                     \input{ {{- element.path -}} }
+                \end{frame}
                     {%- endif %}
                 {%- endfor %}
             {%- endif %}
@@ -62,7 +64,9 @@
 
 
             {%- if element.type == 'TeX' %}
+        \begin{frame}{ {{- element.title -}} }
             \input{ {{- element.path -}} }
+        \end{frame}
             {%- endif %}
         {%- endfor %}
     {%- endfor %}
