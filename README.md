@@ -5,7 +5,7 @@ Generate a LaTeX Beamer Presentation from a hierarchic folder structure.
 All elements must be placed in the folder **TopFolder**. You will find more information about the available elements in the **TopFolder**
 
 ## Requirements
-[Python]() and [Poetry]() needs to be installed on the system.
+[Python](https://www.python.org/downloads/) and [Poetry](https://python-poetry.org/docs/#installation) needs to be installed on the system.
 
 ## Usage
 1. Download or clone the repo
